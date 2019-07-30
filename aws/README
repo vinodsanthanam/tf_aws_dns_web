@@ -1,3 +1,12 @@
 Link for setting up vpc in aws 
 https://medium.com/@mitesh_shamra/manage-aws-vpc-with-terraform-d477d0b5c9c5
 
+Deploy app with Ansible
+https://medium.com/@mitesh_shamra/deploying-website-on-aws-using-terraform-and-ansible-f0251ae71f42
+https://github.com/MiteshSharma/TerraformAnsibleWebsite
+
+
+Ansible setup with terraform
+https://cloud.ibm.com/docs/terraform/ansible?topic=terraform-ansible#ansible
+
+pip install ansible

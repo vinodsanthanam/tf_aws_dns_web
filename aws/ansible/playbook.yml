@@ -1,0 +1,26 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Enable nginx for amazon linux 2
+      shell: "amazon-linux-extras enable nginx1.12"
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: latest
+    - name: Create Static File Home directory
+      file:
+        path: /var/www/home
+        state: directory
+    - name: Copy static files to home directory
+      copy:
+        src: ./static_files/
+        dest: /var/www/home/
+        mode: 0644
+    - name: Copy nginx static config 
+      copy:
+        src: ./static_nginx.conf
+        dest: /etc/nginx/conf.d/static_nginx.conf
+        mode: 0644
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      become: yes
