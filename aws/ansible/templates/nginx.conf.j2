@@ -6,7 +6,7 @@ server {
  
     index index.html index.htm;
  
-    server_name {{ server_name }};
+    server_name {{ server_name }} {{www_server_name}};
     ssl_certificate {{ cert_file }};
     ssl_certificate_key {{ key_file }};
     location / {

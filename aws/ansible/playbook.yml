@@ -2,6 +2,7 @@
   become: yes
   vars:
     server_name: vinodsanthanam.com
+    www_server_name: www.vinodsanthanam.com
     cert_file: /etc/nginx/ssl/nginx.crt
     key_file: /etc/nginx/ssl/nginx.key
   tasks:
