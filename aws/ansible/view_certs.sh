@@ -1,0 +1,1 @@
+openssl x509 -in ./certs/nginx.crt -text -noout

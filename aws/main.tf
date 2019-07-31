@@ -29,7 +29,7 @@ module "instanceModule" {
   availability_zone  = "${var.availability_zone}"
   subnet_public_id   = "${module.networkModule.subnet_public_id}"
   public_key_path    = "${var.public_key_path}"
-  security_group_ids = ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}"]
+  security_group_ids = ["${module.securityGroupModule.sg_22}", "${module.securityGroupModule.sg_80}", "${module.securityGroupModule.sg_443}"]
   instance_ami       = "${var.instance_ami}"
   instance_type      = "${var.instance_type}"
 }

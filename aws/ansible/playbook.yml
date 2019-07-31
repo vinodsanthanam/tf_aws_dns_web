@@ -1,5 +1,9 @@
 - hosts: all
   become: yes
+  vars:
+    server_name: vinodsanthanam.com
+    cert_file: /etc/nginx/ssl/nginx.crt
+    key_file: /etc/nginx/ssl/nginx.key
   tasks:
     - name: Enable nginx for amazon linux 2
       shell: "amazon-linux-extras enable nginx1.12"
@@ -7,6 +11,22 @@
       yum:
         name: nginx
         state: latest
+    - name: Create directory for nginx certificate and private key file
+      file:
+        path: /etc/nginx/ssl
+        state: directory
+    - name: Copy the certificate file in the ssl directory
+      copy:
+        src: ./certs/nginx.crt
+        dest: "{{ cert_file }}"
+        owner: root
+        mode: 0600
+    - name: Copy the private key file in the ssl directory
+      copy:
+        src: ./certs/nginx.key
+        dest: "{{ key_file }}"
+        owner: root
+        mode: 0600
     - name: Create Static File Home directory
       file:
         path: /var/www/home
@@ -16,11 +36,10 @@
         src: ./static_files/
         dest: /var/www/home/
         mode: 0644
-    - name: Copy nginx static config 
-      copy:
-        src: ./static_nginx.conf
-        dest: /etc/nginx/conf.d/static_nginx.conf
-        mode: 0644
-    - name: Restart Nginx
+    - name: copy nginx config file
+      template: src=./templates/nginx.conf.j2 dest=/etc/nginx/conf.d/static_nginx.conf
+      notify: restart nginx
+  handlers:
+    - name: restart nginx
       service: name=nginx state=restarted
       become: yes
