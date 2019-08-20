@@ -6,11 +6,17 @@ server {
  
     index index.html index.htm;
  
-    server_name {{ server_name }} {{www_server_name}};
+    server_name {{ server_name }} {{www_server_name}}; 
     ssl_certificate {{ cert_file }};
     ssl_certificate_key {{ key_file }};
     location / {
         default_type "text/html";        
         try_files $uri $uri/ =404;
     }
+}
+
+server {
+    listen 80;
+    server_name vinodsanthanam.com www.vinodsanthanam.com;
+    return 301 https://vinodsanthanam.dev$request_uri;
 }

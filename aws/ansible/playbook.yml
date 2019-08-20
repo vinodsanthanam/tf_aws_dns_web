@@ -1,10 +1,10 @@
 - hosts: all
   become: yes
   vars:
-    server_name: vinodsanthanam.com
-    www_server_name: www.vinodsanthanam.com
-    cert_file: /etc/nginx/ssl/nginx.crt
-    key_file: /etc/nginx/ssl/nginx.key
+    server_name: vinodsanthanam.dev
+    www_server_name: www.vinodsanthanam.dev
+    cert_file: /etc/nginx/ssl/vinodsanthanam.crt
+    key_file: /etc/nginx/ssl/vinodsanthanam.key
   tasks:
     - name: Enable nginx for amazon linux 2
       shell: "amazon-linux-extras enable nginx1.12"
@@ -18,13 +18,13 @@
         state: directory
     - name: Copy the certificate file in the ssl directory
       copy:
-        src: ./certs/nginx.crt
+        src: ./certs/vinodsanthanam.crt
         dest: "{{ cert_file }}"
         owner: root
         mode: 0600
     - name: Copy the private key file in the ssl directory
       copy:
-        src: ./certs/nginx.key
+        src: ./certs/myserver.key
         dest: "{{ key_file }}"
         owner: root
         mode: 0600

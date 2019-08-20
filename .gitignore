@@ -3,4 +3,7 @@
 */**/*.tfstate*
 */**/*.key
 */**/*.crt
-
+*/**/*key*
+aws/ansible/certs/*
+*/**/.DS_Store*
+*/**/.circleci
