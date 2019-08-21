@@ -18,13 +18,13 @@
         state: directory
     - name: Copy the certificate file in the ssl directory
       copy:
-        src: ./certs/vinodsanthanam.crt
+        src: /etc/certs/vinodsanthanam.crt
         dest: "{{ cert_file }}"
         owner: root
         mode: 0600
     - name: Copy the private key file in the ssl directory
       copy:
-        src: ./certs/myserver.key
+        src: /etc/certs/myserver.key
         dest: "{{ key_file }}"
         owner: root
         mode: 0600
