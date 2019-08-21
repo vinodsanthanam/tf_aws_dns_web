@@ -17,6 +17,8 @@ server {
 
 server {
     listen 80;
+    listen 443 ssl;
+
     server_name vinodsanthanam.com www.vinodsanthanam.com;
     return 301 https://vinodsanthanam.dev$request_uri;
 }
