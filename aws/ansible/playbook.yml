@@ -16,15 +16,15 @@
       file:
         path: /etc/nginx/ssl
         state: directory
-    - name: Copy the certificate file in the ssl directory
+    - name: Copy the certificate file in the ssl directory .
       copy:
-        src: /etc/certs/vinodsanthanam.crt
+        src: ~/certs/vinodsanthanam.crt
         dest: "{{ cert_file }}"
         owner: root
         mode: 0600
     - name: Copy the private key file in the ssl directory
       copy:
-        src: /etc/certs/myserver.key
+        src: ~/certs/myserver.key
         dest: "{{ key_file }}"
         owner: root
         mode: 0600
